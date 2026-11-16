@@ -686,6 +686,15 @@ body{padding-bottom:96px;}
 .adm-empty{padding:12px 0; font-size:13px; color:var(--ink-soft);}
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
+
+<meta name="theme-color" content="#1C2B3A">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Khan Enterprise">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png">
+<link rel="apple-touch-icon" href="./icon-192.png">
 </head>
 <body>
 
@@ -3223,6 +3232,16 @@ function failView(){
   });
 })();
 
+</script>
+
+<script>
+// Installable PWA support. The service worker caches the app shell only.
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register('./service-worker.js', { scope: './' })
+      .catch(function (error) { console.warn('PWA service worker registration failed:', error); });
+  });
+}
 </script>
 </body>
 </html>
